@@ -25,7 +25,7 @@ class Viking extends Soldier{
 
     constructor(name, health, strength){
          super(health, strength);
-         this.name = name; 
+         this.name = name; //Si lo pongo antes que "super" Jasmine lo califica de erróneo. 
     }
 
     receiveDamage(damage) {
@@ -67,39 +67,61 @@ class Saxon extends Soldier {
 
             return `A Saxon has received ${damage} points of damage`; 
         }
-        else { return `A Saxon has died in combat`;}
+        else {return `A Saxon has died in combat`;}
 
-}
-
-
-
+    }
 }
 
 // War
-class War {}
+class War {
 
-/*
-Iteration 3: Saxon
-A Saxon is a weaker kind of Soldier. Unlike a Viking, a Saxon has no name. Their  method will also be different than the original Soldier version.
+    constructor(){
+        this.vikingArmy = [];
+        this.saxonArmy = []; 
 
-Modify the Saxon, constructor function, have it inherit from Soldier and re-implement the receiveDamage() method for Saxon.
+    }
 
-inheritance
-Saxon should extend Soldier
-class
-You don't have to include a constructor method since this class will inherit perfectly from the parents class, both the health and the strength (it extends Soldier class 😉 )
-attack() method
-This method should be inherited from Soldier, no need to re-implement it.
+    addViking(Viking){
 
-should be a function
-should receive 0 arguments
-should return the strength property of the Saxon
-receiveDamage() method
-This method needs to be re-implemented for Saxon because the Saxon version needs to have different return values.
+        this.vikingArmy.push(Viking);
+    }
 
-should be a function
-should receive 1 argument (the damage)
-should remove the received damage from the health property
-if the Saxon is still alive, it should return "A Saxon has received DAMAGE points of damage"
-if the Saxon dies, it should return "A Saxon has died in combat"
-*/
+
+    addSaxon(Saxon){
+
+        this.saxonArmy.push(Saxon);
+
+    }
+
+    vikingAttack(){
+
+        
+        /*should make Saxon receiveDamage() equal to the strength of a Viking
+            should remove dead saxons from the army
+            should return result of calling receiveDamage() of a Saxon with the strength of a Viking*/
+
+    }
+
+    saxonAttack(){
+
+
+
+    }
+
+    showStatus(){
+
+        if (this.saxonArmy.length === 0){
+
+            return `Vikings have won the war of the century!`; 
+        }
+        else if (this.vikingArmy.length === 0){
+
+            return `Saxons have fought for their lives and survived another day...`;
+        }
+        else {return `Vikings and Saxons are still in the thick of battle.`;}
+    }
+
+
+
+}
+
